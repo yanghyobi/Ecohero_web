@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -77,7 +79,6 @@ public class UserController {
         }
     }
 
-
     // 회원가입
     @GetMapping("/signup")
     public String showSignupPage() {
@@ -107,6 +108,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user/check-username")
+    @ResponseBody
+    public Map<String, Boolean> checkUsernameAvailability(@RequestParam String username) {
+        boolean isAvailable = userService.isUsernameAvailable(username);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("available", isAvailable);
+        return response;
+    }
+
     // 사용자 로그인
     @GetMapping("/login")
     public String showLoginPage() {
@@ -131,7 +141,6 @@ public class UserController {
             return "login"; // 로그인 실패 시 다시 로그인 페이지로 돌아가기
         }
     }
-
 
     // 로그아웃
     @GetMapping("/logout")

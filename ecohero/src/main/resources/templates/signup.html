@@ -19,17 +19,21 @@
             });
         });
 
-        function checkUsername() {
-        const username = document.getElementById("username").value;
+    function checkUsername() {
+    const username = document.getElementById("username").value;
 
-        if (!username) {
-            alert("아이디를 입력하세요.");
-            return;
-        }
+    if (!username) {
+        alert("아이디를 입력하세요.");
+        return;
+    }
 
-    // AJAX 요청
-    fetch(`/user/check-username?username=${username}`)
-        .then(response => response.json())
+    fetch(`/user/check-username?username=${encodeURIComponent(username)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("중복 확인 실패");
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.available) {
                 alert("사용 가능한 아이디입니다.");
@@ -39,14 +43,14 @@
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("중복 체크 중 문제가 발생했습니다. 다시 시도해주세요.");
+            alert("중복 확인 중 문제가 발생했습니다.");
         });
+    }
 }
 
-
-        function searchZipcode() {
-            alert("우편번호 검색 기능 구현 필요 (API 연동)");
-        }
+    function searchZipcode() {
+        alert("우편번호 검색 기능 구현 필요 (API 연동)");
+    }
     </script>
 </head>
 <body>
@@ -78,6 +82,11 @@
             </div>
 
             <div class="form-group">
+                <label>이메일 *</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
                 <label>생년월일 *</label>
                 <input type="text" id="birthdate" name="birthdate" placeholder="생년월일" required>
             </div>
@@ -94,7 +103,7 @@
             <div class="form-group">
                 <label>주소 *</label>
                 <div class="input-wrapper">
-                    <input type="text" name="zipcode" placeholder="우편번호" style="width: calc(50% - 60px);" id="postal-code zipcode">
+                    <input type="text" name="zipcode" placeholder="우편번호" style="width: calc(50% - 60px);" id="zipcode">
                     <button type="button" onclick="searchZipcode()" class="inline-button">우편번호 검색</button>
                 </div>
             </div>
