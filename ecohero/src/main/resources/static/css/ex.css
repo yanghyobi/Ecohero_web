@@ -1,0 +1,218 @@
+.problem {
+    position: relative;
+    width: 1440px;
+    height: 2030px;
+    margin: 0 auto;
+}
+  
+  .problem .text-wrapper {
+    position: absolute;
+    width: 222px;
+    height: 30px;
+    top: 1463px;
+    left: 609px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .problem .overlap-group {
+    position: absolute;
+    width: 1440px;
+    height: 514px;
+    top: 854px;
+    left: 0;
+  }
+  
+  .problem .view {
+    width: 1440px;
+    height: 514px;
+    background-color: #b9f6f6;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .problem .div {
+    position: absolute;
+    width: 218px;
+    height: 21px;
+    top: 100px;
+    left: 611px;
+    text-shadow: 0px 4px 4px #00000040;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #212121;
+    font-size: 32px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .text-wrapper-5 a {
+    text-decoration: none; /* 기본 밑줄 제거 */
+    display: block;
+    color: #838282;
+  }
+  .text-wrapper-6 a {
+    text-decoration: none; /* 기본 밑줄 제거 */
+    display: block;
+    color: #078c8c;
+  }
+
+  .problem .p {
+    position: absolute;
+    height: 155px;
+    top: 200px;
+    left: 216px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 50px;
+  }
+  
+  .problem .span {
+    font-weight: 600;
+    color: #008f8c;
+  }
+  
+  .problem .text-wrapper-2 {
+    font-weight: 600;
+    color: #078c8c;
+  }
+  
+  .problem .text-wrapper-3 {
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 24px;
+  }
+  
+  .problem .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 478px;
+    left: 109px;
+  }
+  
+  .problem .ck {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+  }
+  
+  .problem .img {
+    position: relative;
+    width: 314px;
+    height: 314px;
+    margin-left: -10px;
+    object-fit: cover;
+  }
+  
+  .problem .ex {
+    position: absolute;
+    width: 1361px;
+    height: 323px;
+    top: 1590px;
+    left: 39px;
+    object-fit: cover;
+  }
+  
+  .problem .group {
+    position: absolute;
+    width: 824px;
+    height: 226px;
+    top: 50px;
+    left: 139px;
+  }
+  
+  .problem .text-wrapper-4 {
+    position: absolute;
+    height: 39px;
+    top: 68px;
+    left: 461px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #00302f;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .problem .frame {
+    display: flex;
+    width: 470px;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 197px;
+    left: 352px;
+  }
+  
+  .problem .text-wrapper-5 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #838282;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .problem .text-wrapper-6 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #078c8c;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .problem .view-2 {
+    width: 209px;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .problem .text-wrapper-7 {
+    position: absolute;
+    top: 0;
+    left: 21px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .problem .geography {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    top: 0;
+    left: 0;
+  }

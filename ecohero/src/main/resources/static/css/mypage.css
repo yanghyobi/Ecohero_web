@@ -1,0 +1,156 @@
+      /* 전반적인 페이지 스타일 */
+      body {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+      }
+h1{
+  text-align: center;
+}
+
+      /* 콘텐츠 영역 */
+      .container {
+        width: 1200px;
+        margin: 120px auto;
+        background-color: rgba(255, 255, 255);
+        /* 배경을 흰색으로 덮되, 투명도를 설정 */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        /* z-index와 함께 사용하여 배경보다 위로 올라오게 */
+      }
+
+
+      .title {
+        background-color: #078c8c;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* 프로필 정보 컨테이너 */
+      .profile-container {
+        display: flex;
+        justify-content: flex-start;
+        padding: 50px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        /* chick 이미지가 절대 위치를 갖도록 설정 */
+      }
+
+      .profile-container .profile-img {
+        width: 180px;
+        /* 프로필 이미지 크기 조정 */
+        height: 180px;
+        border-radius: 50%;
+        margin-right: 70px;
+        flex-shrink: 0;
+      }
+
+      .profile-container .profile-info {
+        flex-grow: 1;
+        font-size: 18px;
+      }
+
+      /* 이름 스타일 및 수정 버튼 배치 */
+      .profile-container .profile-info h2 {
+        margin: 0;
+        color: #333;
+        display: inline-block;
+      }
+
+      .profile-container .profile-info p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      /* 정보 수정 버튼 스타일 */
+      .profile-container .profile-info .edit-button {
+        background-color: #078c8c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 10px;
+        /* 버튼과 정보 간의 공간 추가 */
+        font-size: 18px;
+        /* 버튼 텍스트 크기 설정 */
+      }
+
+      .profile-container .profile-info .edit-button:hover {
+        background-color: #066e6e;
+      }
+
+      /* chick.svg 이미지 오른쪽 아래에 배치 */
+
+      .profile-container .profile-info img {
+        position: absolute;
+        bottom: 20px;
+        /* 아래쪽 패딩을 추가 */
+        right: 20px;
+        /* 오른쪽에 위치 */
+        /* width와 height 속성을 제거하여 원본 크기 유지 */
+      }
+
+
+      /* 사용자 활동 섹션 */
+      .user-activity {
+        padding: 40px;
+        background-color: #fafafa;
+      }
+
+      .user-activity h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .user-activity .activity-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .user-activity .activity-item:last-child {
+        border-bottom: none;
+      }
+
+      .user-activity .activity-item .activity-title {
+        font-size: 20px;
+        color: #333;
+      }
+
+      .user-activity .activity-item .activity-info {
+        font-size: 18px;
+        color: #999;
+        margin-top: 5px;
+      }
+
+      /* 활동 수정 및 삭제 버튼 스타일 */
+      .user-activity .activity-item .activity-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .user-activity .activity-item .activity-actions button {
+        background-color: #078c8c;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        /* 버튼 텍스트 크기 설정 */
+      }
+
+      .user-activity .activity-item .activity-actions button:hover {
+        background-color: #066e6e;
+      }

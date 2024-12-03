@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>게시글 목록</title>
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/board.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/likeButton.js"></script>
+    <script type="text/javascript" src="js/js_package.js"></script>
+</head>
+<body>
+<!-- 헤더 및 푸터 컨테이너 -->
+<div id="header-container"></div>
+
+<!-- 콘텐츠 영역 -->
+<div id="content-container">
+    <div class="screen">
+        <!-- Breadcrumb Navigation -->
+        <div class="view">
+            <img class="geography" src="/images/path_icon.svg" alt="icon" />
+            <div class="text-wrapper-8">커뮤니티 &gt; 게시판</div>
+        </div>
+
+        <!-- Title Image -->
+        <img class="title-image" src="/images/title.png" alt="게시판 Title" />
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <img class="filter-icon" src="/images/filter.png" alt="Filter" />
+            <input type="text" placeholder="검색어를 입력해주세요!" />
+            <img class="search-icon" src="/images/search.svg" alt="Search" />
+        </div>
+
+        <!-- Table Section -->
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록 날짜</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post, iterStat : ${posts}">
+                <td th:text="${iterStat.count}"></td>
+                <td><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a></td>
+                <td th:text="${post.author.name}"></td>
+                <td th:text="${post.createdAt}"></td>
+                <td>
+                    <button class="like-button" type="button" th:data-id="${post.id}">
+                        <span>
+                            <img th:src="${#lists.contains(post.likedUsers, user) ? '/images/heart.svg' : '/images/heartstrock.svg'}"
+                                 th:alt="${#lists.contains(post.likedUsers, user) ? '좋아요 취소' : '좋아요'}"
+                                 class="like-icon" />
+                            <p class="likes-count" th:id="'likes-count-' + ${post.id}" th:text="${post.likesCount}"></p>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Write Button -->
+        <div class="button-wrapper">
+            <a href="/posts/new"><button class="write-button">작성하기</button></a>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터를 위한 영역 -->
+<div id="footer-container"></div>
+
+<!-- 좋아요 버튼 처리 스크립트 -->
+<script>
+    success: function (response) {
+    const likesCountElement = $(`#likes-count-${postId}`);
+    let likesCount = parseInt(likesCountElement.text());
+    if (response) {
+        button.text('좋아요 취소');
+        likesCountElement.text(likesCount + 1);
+    } else {
+        button.text('좋아요');
+        likesCountElement.text(likesCount - 1);
+    }
+}
+</script>
+</body>
+</html>

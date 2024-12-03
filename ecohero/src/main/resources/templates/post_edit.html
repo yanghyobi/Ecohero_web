@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="/css/edit.css">
+    <script type="text/javascript" src="/js/js_package.js"></script>
+</head>
+<body>
+<div id="header-container"></div>
+<div class="container">
+    <div class="view">
+        <img class="geography" src="images/path_icon.svg" />
+        <p>커뮤니티 &gt; 게시판 &gt; 수정하기</p>
+    </div>
+    <form th:action="@{'/posts/' + ${post.id} + '/edit'}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <select id="category" class="category-select">
+            <option value="" disabled selected>카테고리 선택</option>
+            <option value="category1">카테고리 1</option>
+            <option value="category2">카테고리 2</option>
+            <option value="category3">카테고리 3</option>
+        </select>
+        <input type="text" name="title" th:value="${post.title}" id="title" class="title-input" placeholder="제목을 입력하세요" required/>
+
+        <label class="image-button" for="file">
+            <img src="images/image.png" />
+            이미지 파일 업로드
+        </label>
+        <input type="file" name="image" id="file" class="file-input" accept="image/*" onchange="showImage(event)" />
+        <img th:src="${post.imageUrl}" alt="게시글 이미지">
+        <div id="imagePreview">
+            <img id="previewImage" src="" alt="Image Preview" />
+        </div>
+
+        <textarea name="content" th:text="${post.content}" id="postContent" class="textarea" placeholder="내용을 입력하세요." required></textarea>
+
+        <!-- 버튼 그룹 -->
+        <div class="button-group">
+            <button type="submit" class="submit-button">저장하기</button>
+            <button type="reset" class="submit-button" style="background-color: #ccc;">취소</button>
+        </div>
+    </form>
+</div>
+<script>
+    function showImage(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const preview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+            preview.style.display = 'block';
+            previewImage.src = e.target.result;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+<div id="footer-container"></div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+body {
+  user-select: none;
+  margin: 0;
+  }
+ /* 메인 컨텐츠 레이아웃 */
+ .div-wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+  .overlap {
+    position: relative;
+    width: 100%;
+    height: 1340px;
+    overflow: hidden; /* 넘치는 부분을 숨김 */
+  }
+
+  .overlap-group {
+    position: absolute;
+    width: 1440px;
+    height: 1240px;
+    padding-bottom: 100px;
+    top: 0;
+    left: 0;
+  }
+
+  .do {
+    position: absolute;
+    width: 1440px;
+    height: 340px;
+    bottom: 0px;
+    left: 0;
+    object-fit: cover;
+  }
+
+  /* 슬라이드 컨테이너 설정 */
+  .slide-container {
+    position: absolute;
+    top: 325px;
+    left: 100px;
+    width: 2520px; /* 8개의 슬라이드 + 간격 */
+    height: 570px;
+    display: flex;
+    gap: 40px; /* 각 이미지 사이 간격 */
+    transition: left 0.5s ease-in-out;
+  }
+
+  /* 개별 슬라이드 설정 */
+  .slide {
+    position: relative;
+    width: 280px;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 슬라이드 이미지 */
+  .slide img {
+    width: 280px;
+    height: 570px;
+    object-fit: cover;
+  }
+
+  /* click.png 설정 */
+  .click-overlay {
+    position: absolute;
+    width: 180px;
+    height: 60px;
+    background-image: url('../img/click.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 470px;
+    left: 50%; /* 가운데 정렬 */
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  .right {
+    position: absolute;
+    width: 29px;
+    height: 54px;
+    top: 610px;
+    left: 1373px;
+    cursor: pointer; /* 클릭 가능한 화살표 표시 */
+  }
+
+  .path-icon {
+    width: 19px;
+    height: 19px;
+    vertical-align: middle;
+  }
+
+  .text-wrapper {
+    top: 180px;
+    left: 624px;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    font-size: 32px;
+    position: absolute;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .div {
+    top: 90px;
+    left: 139px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+    position: absolute;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .left {
+    position: absolute;
+    width: 29px;
+    height: 54px;
+    top: 610px;
+    left: 37px;
+    cursor: pointer; /* 클릭 가능한 화살표 표시 */
+  }

@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.foot{
+  background-color: #494949;
+  width: 100%;
+display: flex;
+justify-content: space-between;
+}
+.foot .footer {
+  
+  align-items: center;
+
+  margin: 0 auto;
+  padding: 37px 28px;
+  position: relative;
+
+  width: 1440px;
+  height: auto;
+}
+
+.footer .logo {
+  position: relative;
+  width: 236px;
+  height: 51px;
+  object-fit: cover;
+}
+
+.footer .footertext {
+  position: relative;
+  display: flex;
+  font-family: "Inter-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}

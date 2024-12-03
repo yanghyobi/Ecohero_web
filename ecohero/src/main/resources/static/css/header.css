@@ -1,0 +1,161 @@
+/* 기존 body 스타일 */
+body {
+  background-image: url('../images/backimg.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+body.main {
+  background: none; /* 메인 화면 배경 제거 */
+  background-image: none;
+}
+
+/* Navbar (헤더) 스타일 */
+.navbar {
+  background-color: #b9f6f6;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .header-wrapper {
+  background-color: #b9f6f6;
+  width: 1440px;
+  height: auto;
+  position: relative;
+}
+
+.navbar .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 28px 0;
+}
+
+.navbar .logo {
+  width: 209px;
+  height: 45px;
+  object-fit: cover;
+}
+
+/* 주요 메뉴 스타일 */
+.navbar .menu {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.menu-item a {
+  color: #078c8c; /* 기본 글자색 */
+  text-decoration: none; /* 기본 밑줄 제거 */
+  display: block;
+}
+
+.navbar .menu-item {
+  position: relative;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  color: #078c8c;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu-item:hover {
+  color: #005f5f; /* 호버 시 텍스트 색상 변화 */
+}
+
+/* 하위 메뉴 컨테이너 */
+.navbar .submenu {
+  display: none; /* 기본적으로 숨김 */
+  position: absolute;
+  top: 100%; /* 부모 아래에 위치 */
+  left: 0;
+  background-color: #FFF9DE;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 15;
+}
+
+/* 하위 메뉴 활성화 */
+.navbar .menu-item:hover .submenu {
+  display: block; /* 메뉴 아이템에 호버하면 표시 */
+}
+
+.navbar .submenu-item {
+  font-family: "Inter", Helvetica;
+  font-size: 18px;
+  color: #03C4C4;
+  text-decoration: none;
+  padding: 12px 20px;
+  display: block;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar .submenu-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* 로그인 버튼 스타일 */
+.navbar .log-in, .log-out {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #078c8c;
+  border-radius: 30px;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .log-in:hover, .log-out:hover {
+  background-color: #005f5f; /* 로그인 버튼 호버 스타일 */
+}
+
+/* 로그인 상태에서 사용자 이름, 프로필 이미지 및 로그아웃 버튼 스타일 */
+.navbar .user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 사용자 이름 스타일 */
+.navbar .user-name {
+  color: #078c8c;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 사용자 프로필 이미지 */
+.navbar .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* 로그인되지 않은 경우 로그인 버튼 스타일 */
+.navbar .log-in, .log-out {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+}

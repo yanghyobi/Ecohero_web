@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>게시글 상세</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/js_package.js"></script>
+    <script type="text/javascript" src="/js/likeButton.js"></script>
+    <script type="text/javascript" src="/js/comment.js."></script>
+    <link rel="stylesheet" href="/css/detail.css" />
+    <script>
+        const userLoggedIn = /*[[${currentUser != null}]]*/ false;
+        function checkLogin(event) {
+            if (!userLoggedIn) {
+                alert("로그인이 필요합니다.");
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- 헤더 및 푸터 컨테이너 -->
+<div id="header-container"></div>
+<!-- 콘텐츠 영역 -->
+<div class="container">
+    <main class="board-detail">
+        <!-- 게시글 상세 -->
+        <section class="post">
+            <nav class="breadcrumb">
+                <img src="/images/path_icon.svg" width="24px" height="24px" alt="breadcrumb icon"> 커뮤니티 &gt;
+                <a href="/posts">게시판</a>
+            </nav>
+            <div class="post-title" th:text="${post.title != null ? post.title : '제목 없음'}">
+                <div class="post-actions">
+                    <button class="action-button like">
+                        <img src="/images/good.svg" alt="좋아요 아이콘"> 좋아요
+                    </button>
+                    <button class="action-button share">
+                        <img src="/images/share.svg" alt="공유 아이콘"> 공유하기
+                    </button>
+                </div>
+            </div>
+            <p class="post-meta">
+                작성자: <span class="author" th:text="${post.author != null ? post.author.name : '알 수 없음'}"></span>
+                | 작성일: <span th:text="${post.createdAt != null ? post.createdAt : '날짜 없음'}"></span>
+            </p>
+            <p>좋아요 : <span class="likes-count" th:id="'likes-count-' + ${post.id}" th:text="${post.likesCount}"></span></p>
+            <!-- 좋아요 버튼 -->
+            <button class="like-button"
+                    th:data-id="${post.id}"
+                    th:text="${#lists.contains(post.likedUsers, currentUser) ? '좋아요 취소' : '좋아요'}">
+            </button>
+
+
+            <!-- 구분선 추가 -->
+            <div class="divider"></div>
+
+            <div class="post-content" >
+                <p th:text="${post.content != null ? post.content : '내용 없음'}"></p>
+                <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/default.png'}" alt="게시글 이미지"/>
+            </div>
+        </section>
+
+
+        <!-- 댓글 섹션 -->
+        <section class="comments">
+            <h2>댓글</h2>
+            <form class="comment-form" th:action="@{'/posts/' + ${post.id} + '/comments'}" method="post">
+                <input type="text" name="content" class="comment-input" placeholder="게시글에 대한 의견을 자유롭게 남겨주세요!" required>
+                <button type="submit" class="submit-button">댓글 작성</button>
+            </form>
+
+            <ul class="comment-list" th:if="${post.comments != null}">
+                <li class="comment" th:each="comment : ${post.comments}">
+                    <img class="comment-avatar" src="/images/userIcon.png" alt="user1">
+                    <div class="comment-content">
+                        <p><span class="comment-author" th:text="${comment.author.name}"></span></p>
+                        <p><span class="comment-text" th:text="${comment.content}"></span></p>
+                    </div>
+                    <!--<p>좋아요 수: <span th:text="${comment.likesCount}"></span></p>-->
+                    <form th:action="@{'/comments/' + ${comment.id} + '/like'}" method="post" onsubmit="checkLogin(event)">
+                        <button type="submit" th:text="${comment.likedUsers != null && comment.likedUsers.contains(session.user) ? '좋아요 취소' : '좋아요'}"></button>
+                    </form>
+                </li>
+            </ul>
+        </section>
+    </main>
+</div>
+<!-- 푸터를 위한 영역 -->
+<div id="footer-container"></div>
+<script>
+    success: function (response) {
+    const likesCountElement = $(`#likes-count-${postId}`);
+    let likesCount = parseInt(likesCountElement.text());
+    if (response) {
+        button.text('좋아요 취소');
+        likesCountElement.text(likesCount + 1);
+    } else {
+        button.text('좋아요');
+        likesCountElement.text(likesCount - 1);
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  overflow-x: hidden; /* 수평 스크롤 바 숨기기 */
+}
+
+.mainimg {
+  margin-top: 100px;
+  padding: 0 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: hidden; /* 이곳에서 좌우 스크롤 막기 */
+}
+
+/* 텍스트 영역 */
+.text-container {
+  text-align: center;
+}
+
+.text-wrapper {
+  color: #006969;
+  font-size: 36px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: "Do Hyeon-Regular", Helvetica;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.p {
+  color: #7a7a7a;
+  font-size: 20px;
+  font-family: "Do Hyeon-Regular", Helvetica;
+}
+
+/* 슬라이드 영역 */
+.overlap-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 425px;
+  width: 100%;
+  overflow: hidden; /* 슬라이드 영역 밖 요소 숨김 */
+  padding: 0 20px; /* 화면 양쪽에 여백 조정 */
+  box-sizing: border-box; /* 패딩 포함한 크기 계산 */
+}
+
+/* 이미지 그룹 */
+.group {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 20px; /* 이미지 간격 */
+}
+
+/* 이미지 스타일 */
+.group img {
+  width: 300px;
+  height: 300px;
+  max-width: 100%; /* 이미지가 부모를 넘지 않도록 설정 */
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0; /* 이미지가 축소되지 않도록 */
+  z-index: 1; /* 기본 상태에서 이미지 아래 */
+}
+
+/* 선택된 이미지 확대 효과 */
+.group .selected {
+  transform: scale(1.2); /* 확대 효과 */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  z-index: 2; /* 선택된 이미지를 위로 올리기 */
+}
+
+/* 화살표 버튼 */
+.sendleft,
+.sendright {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: #006969;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10; /* 버튼이 항상 위에 표시되도록 */
+}
+
+.sendleft {
+  left: 30px; /* 화면 좌측 여백 */
+}
+
+.sendright {
+  right: 30px; /* 화면 우측 여백 */
+}
+
+.sendleft::before,
+.sendright::before {
+  content: '';
+  display: inline-block;
+  border: solid white;
+  width: 10px;
+  height: 10px;
+  border-width: 0 3px 3px 0;
+}
+
+.sendleft::before {
+  transform: rotate(135deg);
+}
+
+.sendright::before {
+  transform: rotate(-45deg);
+}

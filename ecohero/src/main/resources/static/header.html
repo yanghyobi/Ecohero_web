@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="/css/header.css" />
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}" />
+  <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<body>
+<div class="navbar">
+  <div class="header-wrapper">
+    <header class="header">
+      <a href="/home"><img class="logo" src="/images/logo.png" alt="Logo" /></a>
+      <nav class="menu">
+        <div class="menu-item">
+          환경문제
+          <div class="submenu">
+            <a class="submenu-item" href="/content1.html">환경문제 바로알기</a>
+            <a class="submenu-item" href="/ex1.html">환경문제 유형</a>
+            <a class="submenu-item" href="/try.html">우리의 노력</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          실천하기
+          <div class="submenu">
+            <a class="submenu-item" href="/recycle.html">분리배출 하기</a>
+            <a class="submenu-item" href="/site.html">환경보호 단체</a>
+            <a class="submenu-item" href="/self.html">스스로 실천하기</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          커뮤니티
+          <div class="submenu">
+            <a class="submenu-item" href="/posts">게시판</a>
+            <a class="submenu-item" href="/qanda.html">자주하는 질문</a>
+            <a class="submenu-item" href="/news.html">소식</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="/mypage">마이페이지</a>
+        </div>
+      </nav>
+
+      <div class="user-info">
+        <!-- 로그인 상태에 따라 다르게 표시 -->
+        <div th:if="${#httpServletRequest.userPrincipal != null}">
+          <!-- 로그인된 사용자 정보 -->
+          <p th:text="${#authentication.principal.username}"></p>
+          <!-- 사용자 프로필 이미지 -->
+          <!--<img th:src="@{'/path/to/profile/' + ${#authentication.name} + '.png'}" class="profile-pic" alt="Profile Picture" />-->
+          <!-- 로그아웃 버튼 (POST 방식으로 처리) -->
+          <form th:action="@{/user/logout}" method="post" class="logout-form">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+            <button type="submit" class="log-out">Log-out</button>
+          </form>
+        </div>
+        <!-- 로그인되지 않은 경우 로그인 버튼만 표시
+        <div th:if="${#httpServletRequest.userPrincipal == null}">
+          로그인되지 않은 상태
+          <a href="/user/login" class="log-in">Log-in</a>
+        </div>-->
+      </div>
+    </header>
+  </div>
+</div>
+</body>

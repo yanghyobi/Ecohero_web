@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="/css/join.css" />
+    <script>
+        $(document).ready(function () {
+            // jQuery UI Datepicker 초기화
+            $("#birthdate").datepicker({
+                changeMonth: true, // 월 선택 가능
+                changeYear: true, // 연도 선택 가능
+                yearRange: "-100:+0", // 100년 전부터 현재까지
+                dateFormat: "yy-mm-dd" // 저장될 포맷
+            });
+        });
+
+        function checkUsername() {
+        const username = document.getElementById("username").value;
+
+        if (!username) {
+            alert("아이디를 입력하세요.");
+            return;
+        }
+
+    // AJAX 요청
+    fetch(`/user/check-username?username=${username}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.available) {
+                alert("사용 가능한 아이디입니다.");
+            } else {
+                alert("이미 사용 중인 아이디입니다.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("중복 체크 중 문제가 발생했습니다. 다시 시도해주세요.");
+        });
+}
+
+
+        function searchZipcode() {
+            alert("우편번호 검색 기능 구현 필요 (API 연동)");
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>회원가입</h1>
+    <form th:action="@{/user/signup}" method="post">
+        <div class="form-section">
+            <!--
+            <div class="form-group">
+                <label>프로필 이미지</label>
+                <input type="file" name="profileImage" accept="image/*">
+            </div>-->
+            <div class="form-group">
+                <label>아이디 *</label>
+                <div class="input-wrapper">
+                    <input type="text" name="username" placeholder="영문 대소문자/숫자, 4~16자" id="username" required>
+                    <button type="button" class="inline-button" onclick="checkUsername()">중복 확인</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호 *</label>
+                <input type="password" name="password" placeholder="영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8~16자" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label>성명 *</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>생년월일 *</label>
+                <input type="text" id="birthdate" name="birthdate" placeholder="생년월일" required>
+            </div>
+
+            <div class="form-group">
+                <label>휴대폰 번호 *</label>
+                <div class="phone-group">
+                    <input type="text" name="phone1" placeholder="010" maxlength="3" size="3" required>-
+                    <input type="text" name="phone2" maxlength="4" size="4" required>-
+                    <input type="text" name="phone3" maxlength="4" size="4" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>주소 *</label>
+                <div class="input-wrapper">
+                    <input type="text" name="zipcode" placeholder="우편번호" style="width: calc(50% - 60px);" id="postal-code zipcode">
+                    <button type="button" onclick="searchZipcode()" class="inline-button">우편번호 검색</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><input type="text" id="address" name="address" placeholder="기본주소" required></label>
+            </div>
+            <div class="form-group">
+                <label><input type="text" placeholder="상세주소"></label>
+            </div>
+        </div>
+        <button type="submit" class="button">회원가입</button>
+    </form>
+</div>
+
+<div th:if="${error}">
+    <p style="color:red;" th:text="${error}"></p>
+</div>
+</body>
+</html>

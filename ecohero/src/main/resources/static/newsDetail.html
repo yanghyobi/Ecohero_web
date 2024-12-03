@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판 상세</title>
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <script type="text/javascript" src="/js/js_package.js"></script>
+  <link rel="stylesheet" href="/css/detail.css" />
+</head>
+<body>
+  <div class="back"></div>
+  <header id="header-container"></header>
+  <div class="container">
+    <main class="board-detail">
+      <!-- 게시글 상세 -->
+      <section class="post">
+        <nav class="breadcrumb">
+          <img src="/images/path_icon.svg" width="24px" height="24px" alt="breadcrumb icon"> 커뮤니티 &gt; 소식
+        </nav>
+        <div class="post-title">
+          기후환경 실천활동 빙고판 공유
+          <div class="post-actions">
+            <button class="action-button like">
+              <img src="/images/good.svg" alt="좋아요 아이콘"> 좋아요
+            </button>
+            <button class="action-button share">
+              <img src="/images/share.svg" alt="공유 아이콘"> 공유하기
+            </button>
+          </div>
+        </div>
+        <p class="post-meta">
+          작성자: <span class="author">username</span> | 작성일: <time datetime="2024-11-03">2024.11.03</time>
+        </p>
+
+        <!-- 구분선 추가 -->
+        <div class="divider"></div>
+
+        <img class="post-image" src="/images/v-3.png" alt="빙고판 이미지">
+        <p class="post-content">
+          기후환경 실천활동 빙고판을 발견해 공유합니다. 혼자서도 할 수 있는 환경살리기 모두 함께해요!
+        </p>
+      </section>
+
+      <!-- 댓글 섹션 -->
+      <section class="comments">
+        <h2>댓글</h2>
+        <form class="comment-form">
+          <input type="text" class="comment-input" placeholder="게시글에 대한 의견을 자유롭게 남겨주세요!">
+          <button type="submit" class="submit-button">댓글 작성</button>
+        </form>
+        <ul class="comment-list">
+          <li class="comment">
+            <img class="comment-avatar" src="/images/userIcon.png" alt="user1">
+            <div class="comment-content">
+              <span class="comment-author">user1</span>
+              <p class="comment-text">좋은정보 감사합니다!</p>
+            </div>
+          </li>
+          <li class="comment">
+            <img class="comment-avatar" src="/images/userIcon.png" alt="user2">
+            <div class="comment-content">
+              <span class="comment-author">user2</span>
+              <p class="comment-text">오늘부터 실천해봐야겠어요 :)</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  <footer id="footer-container"></footer>
+</body>
+</html>

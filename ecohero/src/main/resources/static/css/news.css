@@ -1,0 +1,130 @@
+/* 기본 스타일 및 반응형 디자인 */
+body {
+    font-family: "Inter", Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.screen {
+    width: 100%;
+    max-width: 1440px;
+    height: 1500px;
+    margin:0 auto;
+}
+
+.body {
+    position: relative;
+}
+
+.view {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 90px;
+}
+
+.geography {
+    width: 24px;
+    height: 24px;
+}
+
+.text-wrapper {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.overlap-group {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap; /* 이미지들 및 작성하기 버튼을 감싸는 레이아웃 */
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* 그리드 스타일 */
+.frame {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4열로 이미지 표시 */
+    gap: 20px;
+    padding: 0 70px;
+    justify-items: center;
+    width: 100%;
+}
+
+.div {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.div:hover {
+    transform: scale(1.05);
+}
+
+.v {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.text-wrapper-2 {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+/* 작성하기 버튼 스타일 */
+.write {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 60px;
+    background-color: #078c8c;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-right: 90px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* 버튼을 오른쪽으로 이동 */
+}
+
+.write a {
+    text-decoration: none; /* 밑줄 제거 */
+}
+  
+.write:hover {
+    background-color: #066f6f;
+}
+
+.text-wrapper-3 {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .screen {
+    padding: 20px;
+}
+
+.frame {
+    grid-template-columns: 1fr 1fr; /* 모바일에서 2열로 표시 */
+}
+
+.text-wrapper-2 {
+    font-size: 14px;
+}
+
+.text-wrapper-4 {
+    font-size: 28px;
+}

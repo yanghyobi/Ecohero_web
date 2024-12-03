@@ -1,0 +1,179 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .div-wrapper {
+    position: relative;
+    width: 1440px;
+    height: 2670px;
+    margin: 0 auto; /* 콘텐츠를 수평 중앙 정렬 */
+    background-color: #ffffff;
+  }
+
+  .div-wrapper .overlap-group {
+    position: absolute;
+    width: 1440px;
+    height: 2040px;
+    top: 0;
+    left: 0;
+  }
+
+  .div-wrapper .vector {
+    position: absolute;
+    width: 1440px;
+    height: 514px;
+    top: 0;
+    left: 0;
+  }
+
+  .div-wrapper .view {
+    position: absolute;
+    width: 1440px;
+    height: 1800px;
+    top: 240px;
+    left: 0;
+  }
+
+  .div-wrapper .element {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1100px;
+    align-items: center;
+    gap: 100px 100px;
+    position: absolute;
+    top: 220px;
+    left: 170px;
+  }
+
+  .div-wrapper .div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1100px;
+    align-items: center;
+    gap: 100px 100px;
+    position: relative;
+  }
+
+  .div-wrapper .image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+
+  .div-wrapper .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Hover effect to scale and change the image */
+  .image-container:hover .image {
+    transform: scale(1.4);
+    opacity: 0.9;
+  }
+
+  /* Hover specific image change */
+  .image-container:nth-child(1):hover .image {
+    content: url('../images/img1.png');
+  }
+
+  .image-container:nth-child(2):hover .image {
+    content: url('../images/img2.png');
+  }
+
+  .image-container:nth-child(3):hover .image {
+    content: url('../images/img3.png');
+  }
+
+  .image-container:nth-child(4):hover .image {
+    content: url('../images/img4.png');
+  }
+
+  .image-container:nth-child(5):hover .image {
+    content: url('../images/img5.png');
+  }
+
+  .image-container:nth-child(6):hover .image {
+    content: url('../images/img6.png');
+  }
+
+  .image-container:nth-child(7):hover .image {
+    content: url('../images/img7.png');
+  }
+
+  .image-container:nth-child(8):hover .image {
+    content: url('../images/img8.png');
+  }
+
+  .image-container:nth-child(9):hover .image {
+    content: url('../images/img9.png');
+  }
+
+  .image-container:nth-child(10):hover .image {
+    content: url('../images/img10.png');
+  }
+
+  .image-container:nth-child(11):hover .image {
+    content: url('../images/img11.png');
+  }
+
+  .image-container:nth-child(12):hover .image {
+    content: url('../images/img12.png');
+  }
+
+  .div-wrapper .recycle {
+    position: absolute;
+    width: 1100px;
+    height: 143px;
+    top: 10px;
+    left: 170px;
+    object-fit: cover;
+  }
+
+  .div-wrapper .manu-sub {
+    position: absolute;
+    width: 1440px;
+    height: 80px;
+    top: 160px;
+    left: 0;
+  }
+
+  .div-wrapper .menu-sub {
+    position: relative;
+    width: 209px;
+    height: 19px;
+    top: 31px;
+    left: 139px;
+  }
+
+  .div-wrapper .text-wrapper {
+    position: absolute;
+    top: 0;
+    left: 21px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .div-wrapper .geography {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    top: 0;
+    left: 0;
+  }
+
+  .div-wrapper .more {
+    position: absolute;
+    width: 1440px;
+    height: 500px;
+    top: 2040px;
+    left: 0;
+    object-fit: cover;
+  }

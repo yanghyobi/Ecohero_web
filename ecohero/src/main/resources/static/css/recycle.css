@@ -1,0 +1,57 @@
+html {
+  user-select: none;
+}
+
+.recycle {
+  position: relative;
+  width: 1440px;
+  height: 2950px;
+  margin: 0 auto; /* 콘텐츠를 수평 중앙 정렬 */
+}
+
+.recycle .path {
+  position: absolute;
+  width: 158px;
+  top: 90px;
+  left: 139px;
+  vertical-align: middle;
+}
+
+.recycle .text-wrapper {
+  top: 180px;
+  left: 584px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 32px;
+  position: absolute;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.recycle .div {
+  top: -1px;
+  left: 21px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  position: absolute;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.recycle .geography {
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+}
+
+.recycle .img {
+  position: absolute;
+  width: 1440px;
+  height: 2702px;
+  top: 270px;
+  left: 0;
+}

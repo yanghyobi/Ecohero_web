@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 정보 수정</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/css/updateInfo.css" />
+  <script type="text/javascript" src="/js/js_package.js"></script>
+</head>
+<body>
+<!-- 헤더 영역 -->
+<div id="header-container"></div>
+<div class="container">
+  <h1>회원 정보 수정</h1>
+  <form id="updateForm" action="/mypage/update" method="POST">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <div class="form-section">
+      <div class="form-group">
+        <label>아이디 *</label>
+        <div class="input-wrapper">
+          <input type="text" id="username" readonly required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>비밀번호 *</label>
+        <input type="password" id="password" placeholder="새 비밀번호를 입력하세요" required>
+      </div>
+
+      <div class="form-group">
+        <label>성명 *</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label>생년월일 *</label>
+        <input type="text" id="birthdate" placeholder="YYYYMMDD" required>
+      </div>
+
+      <div class="form-group">
+        <label>휴대폰 번호 *</label>
+        <div class="phone-group">
+          <input type="text" id="phone1" maxlength="3" required>-
+          <input type="text" id="phone2" maxlength="4" required>-
+          <input type="text" id="phone3" maxlength="4" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>이메일 주소 *</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>주소 *</label>
+        <div class="input-wrapper">
+          <input type="text" id="postal-code" placeholder="우편번호" style="width: calc(50% - 60px);" required>
+          <button type="button" class="inline-button" id="search-postal-code">우편번호 검색</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>주소 (상세) *</label>
+        <input type="text" id="address1" placeholder="주소" required>
+        <input type="text" id="address2" placeholder="상세 주소" required>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="button" id="submit-button">수정하기</button>
+      <button type="button" class="button cancel-button" id="cancel-button">취소</button>
+    </div>
+  </form>
+</div>
+<!-- 푸터 영역 -->
+<div id="footer-container"></div>
+
+<script>
+  // 사용자 정보 불러오기
+  $(document).ready(function () {
+      $.ajax({
+          url: '/mypage/data',
+          method: 'GET',
+          success: function (data) {
+              $('#username').val(data.username);
+              $('#name').val(data.name);
+              $('#birthdate').val(data.birthdate);
+              const phone = data.phone.split('-');
+              $('#phone1').val(phone[0]);
+              $('#phone2').val(phone[1]);
+              $('#phone3').val(phone[2]);
+              $('#email').val(data.email);
+              $('#postal-code').val(data.postalCode);
+              $('#address1').val(data.address1);
+              $('#address2').val(data.address2);
+          },
+          error: function () {
+              alert('사용자 정보를 불러오는 데 실패했습니다.');
+          },
+      });
+  });
+
+  // 우편번호 검색 (구현 필요)
+  $('#search-postal-code').click(function () {
+      alert('우편번호 검색 기능은 구현되지 않았습니다.');
+  });
+
+  // 수정하기 버튼
+  $('#submit-button').click(function () {
+      const formData = {
+          username: $('#username').val(),
+          password: $('#password').val(),
+          name: $('#name').val(),
+          birthdate: $('#birthdate').val(),
+          phone: `${$('#phone1').val()}-${$('#phone2').val()}-${$('#phone3').val()}`,
+          email: $('#email').val(),
+          postalCode: $('#postal-code').val(),
+          address1: $('#address1').val(),
+          address2: $('#address2').val(),
+      };
+
+      $.ajax({
+          url: '/mypage/update',
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function () {
+              alert('회원 정보가 성공적으로 수정되었습니다.');
+              window.location.href = '/mypage';
+          },
+          error: function () {
+              alert('회원 정보 수정에 실패했습니다.');
+          },
+      });
+  });
+
+  // 취소 버튼
+  $('#cancel-button').click(function () {
+      window.location.href = '/mypage';
+  });
+</script>
+</body>
+</html>

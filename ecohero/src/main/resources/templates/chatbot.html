@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>에코히어로</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css">
+    <script src="/js/js_package.js"></script>
+</head>
+<body>
+            <div class="container">
+                <h1 class="title">분리수거 챗봇</h1>
+
+                <!-- 사용자 입력 -->
+                <div class="field">
+                    <label class="label">지역을 입력하세요</label>
+                    <div class="control">
+                        <input id="region-input" class="input" type="text" placeholder="예: 서울, 부산">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">물질을 입력하세요</label>
+                    <div class="control">
+                        <input id="material-input" class="input" type="text" placeholder="예: 플라스틱, 종이">
+                    </div>
+                </div>
+
+                <!-- 전송 버튼 -->
+                <div class="field">
+                    <div class="control">
+                        <button id="send-button" class="button is-primary">확인</button>
+                    </div>
+                </div>
+
+                <!-- 규정 결과 표시 -->
+                <div id="result-box" class="box"></div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지</title>
+  <script type="text/javascript" src="js/js_package.js"></script>
+  <link rel="stylesheet" href="css/mypage.css" />
+</head>
+<body>
+
+<!-- 헤더 영역 -->
+<div id="header-container"></div>
+
+<div class="container">
+  <div class="title">마이페이지</div>
+  <div class="profile-container">
+    <!-- 프로필 이미지 -->
+    <img class="profile-img" src="images/myImg.svg" alt="Profile Image">
+    <div class="profile-info">
+      <!-- 사용자 정보 -->
+      <h2 th:text="${user.name}">홍길동</h2>
+      <p>아이디: <span th:text="${user.username}">hong123</span></p>
+      <p>이메일: <span th:text="${user.email}">hong123@example.com</span></p>
+      <p>생년월일: <span th:text="${user.birthdate}">1990-01-01</span></p>
+      <p>주소: <span th:text="${user.address}">서울시 강남구</span></p>
+      <!-- 정보 수정 버튼 -->
+      <a th:href="@{/mypage/edit/{id}(id=${user.id})}">
+        <button class="edit-button">정보 수정</button></a>
+      <!-- chick 이미지가 오른쪽 아래에 위치 -->
+      <img src="images/chick.svg" alt="Chick Icon">
+    </div>
+  </div>
+
+  <div class="user-activity">
+    <h3>내가 작성한 글</h3>
+    <!-- 게시글 목록 -->
+    <div th:each="post : ${posts}" class="activity-item">
+      <div class="activity-info">커뮤니티 > 게시판</div>
+      <div class="activity-title" th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}">오늘 업사이클링 실천했어요!</div>
+      <div class="activity-actions">
+        <!-- 수정 버튼 -->
+        <a th:href="@{'/posts/' + ${post.id} + '/edit'}"><button>수정</button></a>
+        <!-- 삭제 버튼 -->
+        <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post" onsubmit="return confirm('게시글을 삭제하시겠습니까?')">
+          <button type="submit">삭제</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 푸터 영역 -->
+<div id="footer-container"></div>
+
+<script>
+  // 로그인되지 않은 상태에서 마이페이지 접근 시
+  if (!userIsLoggedIn) {
+    alert('로그인 후 마이페이지에 접근할 수 있습니다.');
+    window.location.href = '/user/login';
+  }
+  //
+  document.querySelectorAll('.delete-form').forEach(form => {
+    form.addEventListener('submit', (event) => {
+      if (!confirm('게시글을 삭제하시겠습니까?')) {
+        event.preventDefault();
+      }
+    });
+  });
+
+</script>
+</body>
+</html>

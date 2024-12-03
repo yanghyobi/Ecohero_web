@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/qanda.css" />
+  <script type="text/javascript" src="js/js_package.js"></script>
+</head>
+<body>
+  <div id="header-container"></div>
+    <div class="q-a">
+      <!-- Header -->
+      <div class="frame">
+        <img class="geography" src="images/path_icon.svg" alt="Geography" />
+        <div class="text-wrapper">커뮤니티 &gt; 자주하는 질문</div>
+      </div>
+      <div class="div">FAQ</div>
+
+      <!-- FAQ Items -->
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="question">Q. 분리수거는 어떻게 해야하나요?</div>
+          <img class="vector" src="images/down.svg" alt="Toggle" />
+        </div>
+        <div class="faq-content">
+          <p>
+            분리수거는 각 지역별 분리수거 수칙에 맞춰서 그에 맞게 분리배출해야해요!
+            <br/>종이류는 내용물이나 종이를 제외한 다른 물질들을 제거한 후에 운반하기 쉽게
+            펴서 배출해야하고, 금속류는 겉 또는 속의 플라스틱 뚜껑은 제거하고 내용물을 비운 후
+            가능한 한 압착해서 분리수거해주세요! 단, 페인트나 오일 등이 묻은 캔류, 노트,
+            스프링 등은 분리배출이 불가합니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="question">Q. 바나나 껍데기는 일반쓰레기인가요?</div>
+          <img class="vector" src="images/down.svg" alt="Toggle" />
+        </div>
+        <div class="faq-content">
+          <p>바나나 껍데기는 일반쓰레기가 아니며 음식물 쓰레기로 분리배출해야 합니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="question">Q. 후원을 하고 싶은데 어떻게 해야하나요?</div>
+          <img class="vector" src="images/down.svg" alt="Toggle" />
+        </div>
+        <div class="faq-content">
+          <p>후원을 원하시면 에코히어로 사이트의 후원 페이지를 방문하시거나, 고객센터로 연락해주시면 됩니다.</p>
+        </div>
+      </div>
+      <!-- Q&A 섹션 -->
+ <div class="div">Q&A</div>
+ <table class="q-a-table">
+   <thead>
+     <tr>
+       <th>번호</th>
+       <th>제목</th>
+       <th>사용자</th>
+       <th>답변여부</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td>1</td>
+       <td>비밀번호를 잊어버렸어요</td>
+       <td>abc123***</td>
+       <td>답변 전</td>
+     </tr>
+     <tr>
+       <td>2</td>
+       <td>에코히어로는 어떤 사이트인가요?</td>
+       <td>ecohero01</td>
+       <td>답변 완료</td>
+     </tr>
+   </tbody>
+ </table>
+
+    <!-- 작성 버튼 -->
+      <div class="footer">
+        <button class="write-button">작성하기</button>
+      </div>
+    </div>
+    <script>
+      // JavaScript for FAQ dropdown functionality
+      document.querySelectorAll('.faq-header').forEach((header) => {
+        header.addEventListener('click', () => {
+          const content = header.nextElementSibling;
+          const icon = header.querySelector('img');
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            icon.src = 'images/down.svg';
+          } else {
+            content.style.display = 'block';
+            icon.src = 'images/up.svg';
+          }
+        });
+      });
+    </script>
+  <div id="footer-container"></div>
+</body>
+</html>

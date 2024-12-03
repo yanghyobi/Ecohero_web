@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="/css/write.css" />
+    <script type="text/javascript" src="/js/js_package.js"></script>
+</head>
+<body>
+<!-- 헤더 및 푸터 컨테이너 -->
+<div id="header-container"></div>
+<!-- 콘텐츠 영역 -->
+<div class="container">
+    <!-- 경로 표시 -->
+    <div class="view">
+        <img class="geography" src="/images/path_icon.svg" />
+        <p>커뮤니티 &gt; 게시판 &gt; 작성하기</p>
+    </div>
+    <h1>게시글 작성</h1>
+    <form th:action="@{/posts}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+        <div>
+            <!-- 제목 입력란 -->
+            <input type="text" name="title" id="title" class="title-input" placeholder="제목을 입력하세요" required/>
+            <!-- 카테고리 선택 드롭다운 -->
+            <select id="category" class="category-select" name="category">
+                <option value="" disabled selected>카테고리 선택</option>
+                <option value="category1">카테고리 1</option>
+                <option value="category2">카테고리 2</option>
+                <option value="category3">카테고리 3</option>
+            </select>
+        </div>
+        <div>
+            <!-- 텍스트 입력 영역 -->
+            <textarea name="content" id="postContent" class="textarea" placeholder="내용을 입력하세요." required></textarea>
+        </div>
+        <div>
+            <label class="image-button" for="file">
+                <img src="/images/image.png"/>
+            </label>
+            <input type="file" id="file" class="file-input" name="image" accept="image/*" onchange="showPreview(event)">
+            <!-- 미리보기 이미지 -->
+            <div id="imagePreview">
+                <img id="previewImage" src="" alt="Image Preview" />
+            </div>
+        </div>
+        <!-- 게시글 작성 버튼 -->
+        <button class="submit-button" type="submit">작성하기</button>
+    </form>
+</div>
+<!-- 푸터를 위한 영역 -->
+<div id="footer-container"></div>
+<script>
+    // 이미지 미리보기 함수
+    function showImage(event) {
+    const file = event.target.files[0];
+    if (!file) return; // 파일이 없으면 종료
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const preview = document.getElementById('imagePreview');
+        const previewImage = document.getElementById('previewImage');
+        preview.style.display = 'block'; // 미리보기 보이기
+        previewImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file); // 이미지 데이터 읽기
+}
+
+</script>
+</body>
+</html>

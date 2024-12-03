@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이디 중복 확인</title>
+  <script>
+    function checkUsername() {
+        const username = document.getElementById("username").value;
+        const resultMessage = document.getElementById("check-result");
+
+        if (!username) {
+            resultMessage.textContent = "아이디를 입력하세요.";
+            resultMessage.style.color = "red";
+            return;
+        }
+
+        // AJAX 요청을 보내서 중복 확인
+        fetch(`/user/check-username?username=${username}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.available) {
+                    resultMessage.textContent = "사용 가능한 아이디입니다.";
+                    resultMessage.style.color = "green";
+                } else {
+                    resultMessage.textContent = "이미 사용 중인 아이디입니다.";
+                    resultMessage.style.color = "red";
+                }
+            })
+            .catch(error => {
+                resultMessage.textContent = "중복 확인 중 오류가 발생했습니다.";
+                resultMessage.style.color = "red";
+                console.error("Error:", error);
+            });
+    }
+  </script>
+</head>
+<body>
+<div>
+  <h1>아이디 중복 확인</h1>
+  <form action="#" method="GET" id="username-check-form">
+    <label for="username">아이디:</label>
+    <input type="text" id="username" name="username" required>
+    <button type="button" onclick="checkUsername()">중복 확인</button>
+  </form>
+
+  <p id="check-result"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Hero</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/session3.css" />
+    <link rel="stylesheet" href="css/session4.css" />
+</head>
+<body>
+<div class="navbar">
+    <div class="header-wrapper">
+        <header class="header">
+            <a href="/home"><img class="logo" src="images/logo.png" alt="Logo" /></a>
+            <nav class="menu">
+                <div class="menu-item">
+                    환경문제
+                    <div class="submenu">
+                        <a class="submenu-item" href="content1.html">환경문제 바로알기</a>
+                        <a class="submenu-item" href="ex1.html">환경문제 유형</a>
+                        <a class="submenu-item" href="try.html">우리의 노력</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    실천하기
+                    <div class="submenu">
+                        <a class="submenu-item" href="recycle.html">분리배출 하기</a>
+                        <a class="submenu-item" href="site.html">환경보호 단체</a>
+                        <a class="submenu-item" href="self.html">스스로 실천하기</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    커뮤니티
+                    <div class="submenu">
+                        <a class="submenu-item" href="/posts">게시판</a>
+                        <a class="submenu-item" href="qanda.html">자주하는 질문</a>
+                        <a class="submenu-item" href="news.html">소식</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="/mypage">마이페이지</a>
+                </div>
+            </nav>
+            <a class="log-in" href="/user/login">Log-in</a>
+        </header>
+    </div>
+</div>
+
+<!-- Fullpage Sections -->
+<div class="main" id="main">
+    <!-- Hero Section -->
+    <div class="section">
+        <div>
+            <h1>환영합니다, 에코 히어로!</h1>
+            <p>지구를 위한 작은 실천을 시작해보세요.</p>
+        </div>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div class="section">
+        <div class="session2">
+            <!-- AI 챗봇 안내 텍스트 -->
+            <p class="AI">
+                에코히어로 AI 챗봇에서 우리 동네 <br />
+                분리수거 방법에 대해 물어보세요!
+            </p>
+
+            <!-- 검색창들 -->
+            <div class="input-wrapper">
+                <!-- 지역 입력 -->
+                <div class="div">
+                    <input type="text" id="region-input" class="input-field" placeholder="지역 입력" />
+                </div>
+                <!-- 물질 입력 -->
+                <div class="frame">
+                    <input type="text" id="material-input" class="input-field" placeholder="물질 입력" />
+                </div>
+                <button id="send-button" class="search"></button>
+            </div>
+
+            <!-- 검색 결과 -->
+            <div id="result-box" class="result">
+                검색 결과가 여기에 표시됩니다.
+            </div>
+
+            <!-- Hero Image -->
+            <img class="heroman" src="images/mini.png" />
+        </div>
+    </div>
+
+    <!-- 뉴스 및 실천 섹션 유지 -->
+    <div class="section">
+        <div class="mainimg">
+            <div class="text-container">
+                <p class="text-wrapper">에코히어로가 전하는 환경 소식</p>
+                <p class="p">
+                    지구를 위한 오늘의 실천을 <br/>
+                    에코히어로와 함께 시작해보세요!
+                </p>
+            </div>
+            <div class="overlap-group">
+                <button class="sendleft"></button>
+                <div class="group">
+                    <img class="img" src="images/v1.png" alt="Image 1" />
+                    <img class="img" src="images/v2.png" alt="Image 2" />
+                    <img class="img selected" src="images/v3.png" alt="Image 3" />
+                    <img class="img" src="images/v4.png" alt="Image 4" />
+                    <img class="img" src="images/v5.png" alt="Image 5" />
+                </div>
+                <button class="sendright"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실천 정보 섹션 유지 -->
+    <div class="section">
+        <div class="session4">
+            <p class="text-wrap4">여러분의 실천들을 모아 우리의 지구를 지켜요</p>
+            <div class="overlap">
+                <p class="div">오늘의 실천으로 모인 마음의 수</p>
+                <div class="count-container">
+                    <div class="counter" id="counter">15,360</div>
+                    <img src="images/heart.svg" />
+                </div>
+                <div class="do-wrapper">
+                    <div class="do-item">
+                        <p class="do-text">오늘 재활용 가능한 쓰레기를 올바르게 분리하여 배출했나요?</p>
+                        <img class="heart" src="images/heartstrock.svg" />
+                    </div>
+                    <div class="do-item">
+                        <p class="do-text">오늘 전기를 아끼기 위해 불필요한 전등과 전자기기를 껐나요?</p>
+                        <img class="heart" src="images/heartstrock.svg" />
+                    </div>
+                </div>
+            </div>
+            <div class="do-2"><a href="self.html">
+                다양한 실천방법 보러가기
+                <img class="cursor" src="images/Cursor.png" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navigation Dots -->
+<div class="nav-dots" id="navDots"></div>
+<script type="text/javascript" src="js/main.js"></script>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

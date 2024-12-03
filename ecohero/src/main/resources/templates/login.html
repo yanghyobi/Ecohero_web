@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>Login</title>
+</head>
+<body>
+<div class="background"></div>
+<div class="login">
+    <div class="login-container">
+        <div class="login-title">Log-in</div>
+            <form action="/user/login" method="post" th:action="@{/user/login}">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/> <!-- CSRF 토큰 추가 -->
+            <div class="input-wrapper">
+                <label for="username">아이디</label>
+                <input type="text" id="username" name="username" placeholder="아이디를 입력하세요" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password"  placeholder="비밀번호를 입력하세요"  required>
+            </div>
+            <button class="login-button" type="submit">로그인</button>
+            <div class="options">
+                <a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a>
+                <a href="/user/signup" style="margin-left: auto;">회원가입</a>
+            </div>
+            </form>
+    </div>
+</div>
+</body>
+</html>
