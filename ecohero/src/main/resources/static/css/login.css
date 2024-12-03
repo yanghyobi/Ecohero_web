@@ -22,7 +22,7 @@ body {
     transform: translateX(-50%); /* 가로 방향 중앙 정렬 */
     width: 1440px;
     height: 514px;
-    background-image: url('../img/back.svg'); /* 원래 배경 이미지 */
+    background-image: url('../images/backimg.svg'); /* 원래 배경 이미지 */
     background-size: cover;
     background-repeat: no-repeat;
   }

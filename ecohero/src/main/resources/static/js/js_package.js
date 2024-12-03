@@ -4,6 +4,7 @@ function loadHeader() {
      .then(response => response.text())
      .then(data => document.getElementById('header-container').innerHTML = data)
      .catch(error => console.error('Error loading header:', error));
+
 }
 
  // 푸터 로드 함수

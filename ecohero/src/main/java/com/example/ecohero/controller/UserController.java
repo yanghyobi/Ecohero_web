@@ -91,7 +91,9 @@ public class UserController {
             @RequestParam String password,
             @RequestParam String email,
             @RequestParam String name,
-            @RequestParam String phone,
+            @RequestParam String phone1,
+            @RequestParam String phone2,
+            @RequestParam String phone3,
             @RequestParam String address,
             @RequestParam String zipcode,
             @RequestParam String birthdate,
@@ -99,6 +101,7 @@ public class UserController {
             Model model
     ) {
         try {
+            String phone = String.join("-", phone1, phone2, phone3); // 조합하여 저장
             userService.registerUser(username, password, email, name, phone, address, zipcode, birthdate, profileImage);
             model.addAttribute("message", "회원가입이 완료되었습니다.");
             return "redirect:/user/login";

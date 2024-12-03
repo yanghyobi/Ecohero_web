@@ -36,7 +36,7 @@
             </nav>
             <div class="post-title" th:text="${post.title != null ? post.title : '제목 없음'}">
                 <div class="post-actions">
-                    <button class="action-button like">
+                    <button class="action-button like" th:data-id="${post.id}">
                         <img src="/images/good.svg" alt="좋아요 아이콘"> 좋아요
                     </button>
                     <button class="action-button share">
