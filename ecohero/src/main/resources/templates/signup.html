@@ -27,26 +27,25 @@
         return;
     }
 
-    fetch(`/user/check-username?username=${encodeURIComponent(username)}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("중복 확인 실패");
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.available) {
-                alert("사용 가능한 아이디입니다.");
-            } else {
-                alert("이미 사용 중인 아이디입니다.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("중복 확인 중 문제가 발생했습니다.");
-        });
-    }
-}
+   fetch(`/user/check-username?username=${encodeURIComponent(username)}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("중복 확인 실패");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.available) {
+            alert("사용 가능한 아이디입니다.");
+        } else {
+            alert("이미 사용 중인 아이디입니다.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("중복 확인 중 문제가 발생했습니다.");
+    });
+
 
     function searchZipcode() {
         alert("우편번호 검색 기능 구현 필요 (API 연동)");

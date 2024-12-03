@@ -19,6 +19,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/user/signup", "/user/login", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/user/logout", "/user/{id}", "/comments/**", "/mypage", "/uploads/**").authenticated()
+                        .requestMatchers("/user/check-username", "/images/**").permitAll()
                         .requestMatchers("/posts").permitAll()
                         .requestMatchers(HttpMethod.POST, "/posts/*/like").authenticated()
                         .anyRequest().permitAll()
